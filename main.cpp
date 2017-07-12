@@ -72,14 +72,10 @@ int  main()
 	double sum = 0.0;
 	int count = triangles.size();
 	int i = 0;
-#pragma omp parallel
+#pragma omp parallel for lastprivate(i) shared(triangles) reduction(+: sum)
+	for (i = 0; i < count; i++)
 	{
-#pragma omp for lastprivate(i)	reduction(+: sum)
-			for (i = 0; i < count; i++)
-			{
-				sum += triangles[i]->getArea();
-				
-			}
+		sum += triangles[i]->getArea();
 	}
 	cout << "Sum = " << sum << endl;
 	
