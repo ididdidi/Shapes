@@ -1,90 +1,90 @@
 #include "ShapesDll.h"
-	// Методы базлового классса Shape
+	// РњРµС‚РѕРґС‹ Р±Р°Р·Р»РѕРІРѕРіРѕ РєР»Р°СЃСЃСЃР° Shape
 Shape::~Shape() 
 { }
-	// вывести параметры фигуры на экран
+	// РІС‹РІРµСЃС‚Рё РїР°СЂР°РјРµС‚СЂС‹ С„РёРіСѓСЂС‹ РЅР° СЌРєСЂР°РЅ
 void Shape::display()
 {
-	std::cout << formatS(typeid(*this).name()); // вывод названия фигур и полей базового класса
+	std::cout << formatS(typeid(*this).name()); // РІС‹РІРѕРґ РЅР°Р·РІР°РЅРёСЏ С„РёРіСѓСЂ Рё РїРѕР»РµР№ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР°
 }
-	// редактировать параметры фигуры
+	// СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёРіСѓСЂС‹
 void Shape::editShape()
 {
 	std::cout << "\tEdit the " << formatS(typeid(*this).name()) << std::endl;
-	// редактирование полей базового класса
+	// СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїРѕР»РµР№ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР°
 }
 
-	// Методы классса Triangle
+	// РњРµС‚РѕРґС‹ РєР»Р°СЃСЃСЃР° Triangle
 Triangle::Triangle(float lengthAB, float lengthAC, float aBAC) 
 	: sideAB(lengthAB), sideAC(lengthAC), anglBAC(aBAC)
 { }
-	// посчитать и вернуть площадь фигуры
+	// РїРѕСЃС‡РёС‚Р°С‚СЊ Рё РІРµСЂРЅСѓС‚СЊ РїР»РѕС‰Р°РґСЊ С„РёРіСѓСЂС‹
 double Triangle::getArea()
 {
 	return (sideAB*sideAC*sin(anglBAC*3.14159265/180))/2;
 }
-	// вывести параметры фигуры на экран
+	// РІС‹РІРµСЃС‚Рё РїР°СЂР°РјРµС‚СЂС‹ С„РёРіСѓСЂС‹ РЅР° СЌРєСЂР°РЅ
 void Triangle::display()
 {
 	Shape::display();
 	std::cout << ":\tSide AB = " << sideAB << ",\tSide AC = " << sideAC 
 		<< ",\tAngl BAC = " << anglBAC << ";";
 }
-	// редактировать параметры фигуры
+	// СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёРіСѓСЂС‹
 void Triangle::editShape()
 {
-	Shape::editShape(); // редактирование полей базового класса
+	Shape::editShape(); // СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїРѕР»РµР№ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР°
 	std::cout << " Enter the side AB... ";	std::cin >> sideAB;
 	std::cout << " Enter the side AC... ";	std::cin >> sideAC;
 	std::cout << " Enter the angl BAC... ";	std::cin >> anglBAC;
 }
 
-	// Методы классса Rectangle
+	// РњРµС‚РѕРґС‹ РєР»Р°СЃСЃСЃР° Rectangle
 Rectangle::Rectangle(float lengthA, float lengthB) : sideA(lengthA), sideB(lengthB)
 { }
-	// посчитать и вернуть площадь фигуры
+	// РїРѕСЃС‡РёС‚Р°С‚СЊ Рё РІРµСЂРЅСѓС‚СЊ РїР»РѕС‰Р°РґСЊ С„РёРіСѓСЂС‹
 double Rectangle::getArea()
 {
 	return sideA * sideB;
 }
-	// вывести параметры фигуры на экран
+	// РІС‹РІРµСЃС‚Рё РїР°СЂР°РјРµС‚СЂС‹ С„РёРіСѓСЂС‹ РЅР° СЌРєСЂР°РЅ
 void Rectangle::display()
 {
 	Shape::display();
 	std::cout << ":\tWidth = " << sideA << ",\tHeight = " << sideB << ";";
 }
-	// редактировать параметры фигуры
+	// СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёРіСѓСЂС‹
 void Rectangle::editShape()
 {
-	Shape::editShape(); // редактирование полей базового класса
+	Shape::editShape(); // СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїРѕР»РµР№ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР°
 	std::cout << " Enter the width... ";	std::cin >> sideA;
 	std::cout << " Enter the height... ";	std::cin >> sideB;
 }
 
-	// Методы классса RegularPolygons
+	// РњРµС‚РѕРґС‹ РєР»Р°СЃСЃСЃР° RegularPolygons
 RegPolygons::RegPolygons(int nAngles, float lSide) : numAngles(nAngles), side(lSide)
 { }
-	// посчитать и вернуть площадь фигуры
+	// РїРѕСЃС‡РёС‚Р°С‚СЊ Рё РІРµСЂРЅСѓС‚СЊ РїР»РѕС‰Р°РґСЊ С„РёРіСѓСЂС‹
 double RegPolygons::getArea()
 {
 	return  (numAngles * side*side) / (4 * tan(3.14159265 / numAngles));
 }
-	// вывести параметры фигуры на экран
+	// РІС‹РІРµСЃС‚Рё РїР°СЂР°РјРµС‚СЂС‹ С„РёРіСѓСЂС‹ РЅР° СЌРєСЂР°РЅ
 void RegPolygons::display()
 {
 	Shape::display();
 	std::cout << ":\tNumber of sides = " << numAngles << ",\tlength of the sides = " << side << ";";
 }
-	// редактировать параметры фигуры
+	// СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёРіСѓСЂС‹
 void RegPolygons::editShape()
 {
-	Shape::editShape(); // редактирование полей базового класса
+	Shape::editShape(); // СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїРѕР»РµР№ Р±Р°Р·РѕРІРѕРіРѕ РєР»Р°СЃСЃР°
 	std::cout << " Enter the number of sides... ";	std::cin >> numAngles;
 	std::cout << " Enter the length of the side... ";	std::cin >> side;
 }
 
-	// функция форматирования строки вывода
+	// С„СѓРЅРєС†РёСЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ СЃС‚СЂРѕРєРё РІС‹РІРѕРґР°
 const char* formatS(const char* strs)
 {
-	return strs + 6;		// смещаем указатель на шесьт символов впарво
+	return strs + 6;		// СЃРјРµС‰Р°РµРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° С€РµСЃСЊС‚ СЃРёРјРІРѕР»РѕРІ РІРїР°СЂРІРѕ
 }
