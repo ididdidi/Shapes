@@ -27,7 +27,7 @@ int  main()
 				shapes[i] = new Rectangle(1 + rand() % 10, 1 + rand() % 10);
 			else
 				if (i % 3 == 2)
-					shapes[i] = new RegularPolygons(4 + rand() % 15, 1 + rand() % 10);
+					shapes[i] = new RegPolygons(4 + rand() % 15, 1 + rand() % 10);
 	}
 
 	for (const auto &i: shapes)
@@ -47,7 +47,7 @@ int  main()
 	for (const auto &i : triangles)
 	{
 		i->display();
-		cout << "  \tArea: " << i->getArea() << endl;
+		cout << "\tArea: " << i->getArea() << endl;
 	}
 	system("pause");			cout << endl;
 
@@ -64,7 +64,7 @@ int  main()
 	for (const auto &i : triangles)
 	{
 		i->display();
-		cout << "  \tArea: "<< i->getArea() << endl;
+		cout << "\tArea: "<< i->getArea() << endl;
 	}
 	system("pause");			cout << endl;
 

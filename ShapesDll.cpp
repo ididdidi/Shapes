@@ -27,8 +27,8 @@ double Triangle::getArea()
 void Triangle::display()
 {
 	Shape::display();
-	std::cout << " - Side AB: " << sideAB << ", Side AC: " << sideAC 
-		<< ", Angl BAC:" << anglBAC << ";";
+	std::cout << ":\tSide AB = " << sideAB << ",\tSide AC = " << sideAC 
+		<< ",\tAngl BAC = " << anglBAC << ";";
 }
 	// редактировать параметры фигуры
 void Triangle::editShape()
@@ -51,7 +51,7 @@ double Rectangle::getArea()
 void Rectangle::display()
 {
 	Shape::display();
-	std::cout << " - Width: " << sideA << ", Height: " << sideB << ";";
+	std::cout << ":\tWidth = " << sideA << ",\tHeight = " << sideB << ";";
 }
 	// редактировать параметры фигуры
 void Rectangle::editShape()
@@ -62,21 +62,21 @@ void Rectangle::editShape()
 }
 
 	// Методы классса RegularPolygons
-RegularPolygons::RegularPolygons(int nAngles, float lSide) : numAngles(nAngles), side(lSide)
+RegPolygons::RegPolygons(int nAngles, float lSide) : numAngles(nAngles), side(lSide)
 { }
 	// посчитать и вернуть площадь фигуры
-double RegularPolygons::getArea()
+double RegPolygons::getArea()
 {
 	return  (numAngles * side*side) / (4 * tan(3.14159265 / numAngles));
 }
 	// вывести параметры фигуры на экран
-void RegularPolygons::display()
+void RegPolygons::display()
 {
 	Shape::display();
-	std::cout << " - Number of sides: " << numAngles << ", length of the sides: " << side << ";";
+	std::cout << ":\tNumber of sides = " << numAngles << ",\tlength of the sides = " << side << ";";
 }
 	// редактировать параметры фигуры
-void RegularPolygons::editShape()
+void RegPolygons::editShape()
 {
 	Shape::editShape(); // редактирование полей базового класса
 	std::cout << " Enter the number of sides... ";	std::cin >> numAngles;

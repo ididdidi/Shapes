@@ -54,14 +54,14 @@ public:
 };
 
 	// класс для хранения правильных многоугольников
-class RegularPolygons : public Shape
+class RegPolygons : public Shape
 {
 protected:
 	int numAngles;
 	float side;
 public:
-	SHAPESDLL_API RegularPolygons(int nAngles, float lSide);
-	SHAPESDLL_API ~RegularPolygons() = default;
+	SHAPESDLL_API RegPolygons(int nAngles, float lSide);
+	SHAPESDLL_API ~RegPolygons() = default;
 	SHAPESDLL_API double getArea() override;	// посчитать и вернуть площадь фигуры
 	SHAPESDLL_API void display() override;		// вывести параметры фигуры на экран
 	SHAPESDLL_API void editShape() override;	// редактировать параметры фигуры
