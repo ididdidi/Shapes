@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <typeinfo>
+#include <string>
 
 	// Базовый класс для хранения геометрических фигур
 class Shape
@@ -20,8 +21,17 @@ public:
 	SHAPESDLL_API Shape() = default;
 	virtual SHAPESDLL_API ~Shape() = 0;
 	virtual SHAPESDLL_API double getArea()const = 0;	// посчитать и вернуть площадь фигуры
-	virtual SHAPESDLL_API void display()const;			// вывести параметры фигуры на экран
+	virtual SHAPESDLL_API void showSets()const;			// вывести параметры фигуры на экран
 	virtual SHAPESDLL_API void editShape();				// редактировать параметры фигуры
+	class SizeError								// класс исключений
+	{
+	public:
+		std::string origin;						// для имени функции
+		std::string description;				// описание
+		SizeError(std::string or, std::string desc)
+			: origin(or ), description(desc)
+		{ }
+	};
 };
 
 	// Класс для хранения треугольников
@@ -35,7 +45,7 @@ public:
 	SHAPESDLL_API Triangle(float lengthAB, float lengthAC, float aBAC);
 	SHAPESDLL_API ~Triangle() = default;
 	SHAPESDLL_API double getArea()const override;	// посчитать и вернуть площадь фигуры
-	SHAPESDLL_API void display()const override;		// вывести параметры фигуры на экран
+	SHAPESDLL_API void showSets()const override;		// вывести параметры фигуры на экран
 	SHAPESDLL_API void editShape() override;		// редактировать параметры фигуры
 };
 
@@ -49,7 +59,7 @@ public:
 	SHAPESDLL_API Rectangle(float lengthA, float lengthB);
 	SHAPESDLL_API ~Rectangle() = default;
 	SHAPESDLL_API double getArea()const override;	// посчитать и вернуть площадь фигуры
-	SHAPESDLL_API void display()const override;		// вывести параметры фигуры на экран
+	SHAPESDLL_API void showSets()const override;		// вывести параметры фигуры на экран
 	SHAPESDLL_API void editShape() override;		// редактировать параметры фигуры
 };
 
@@ -63,7 +73,7 @@ public:
 	SHAPESDLL_API RegPolygons(int nAngles, float lSide);
 	SHAPESDLL_API ~RegPolygons() = default;
 	SHAPESDLL_API double getArea()const override;	// посчитать и вернуть площадь фигуры
-	SHAPESDLL_API void display()const override;		// вывести параметры фигуры на экран
+	SHAPESDLL_API void showSets()const override;		// вывести параметры фигуры на экран
 	SHAPESDLL_API void editShape() override;		// редактировать параметры фигуры
 };
 							

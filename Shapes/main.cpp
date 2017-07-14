@@ -16,7 +16,7 @@ public:
 
 int  main()
 {
-	cout << " Create and initialize a container for the different shapes\n";
+	cout << "\n Create and initialize a container for the different shapes\n";
 	vector<Shape*> shapes(10);
 	for (unsigned int i = 0; i < shapes.size(); i++)
 	{
@@ -32,7 +32,7 @@ int  main()
 
 	for (const auto &i: shapes)
 	{
-		i->display();			cout << endl;
+		i->showSets();			cout << endl;
 	}
 	system("pause");			cout << endl;
 
@@ -46,16 +46,26 @@ int  main()
 	}
 	for (const auto &i : triangles)
 	{
-		i->display();
+		i->showSets();
 		cout << "\tArea: " << i->getArea() << endl;
 	}
 	system("pause");			cout << endl;
 
-	cout << " Change one of the triangles\n";
-	triangles[0]->display();	cout << endl;
-	triangles[0]->editShape();
+	bool error;
+	do {
+		error = false;
+		try {
+			cout << " Change one of the triangles\n";
+			triangles[0]->showSets();	cout << endl;
+			triangles[0]->editShape();
+		}
+		catch (Shape::SizeError ix) {
+			cout << "Error in the process \"" << ix.origin << '\"' << ix.description << endl;
+			error = true;
+		}
+	} while (error);
 	cout << " Changed the contents of the first container:\n";
-	shapes[0]->display();		cout << endl;
+	shapes[0]->showSets();		cout << endl;
 	system("pause");			cout << endl;
 
 	cout << " Sorting triangles by area\n";
@@ -63,7 +73,7 @@ int  main()
 
 	for (const auto &i : triangles)
 	{
-		i->display();
+		i->showSets();
 		cout << "\tArea: "<< i->getArea() << endl;
 	}
 	system("pause");			cout << endl;
