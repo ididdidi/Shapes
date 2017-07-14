@@ -16,7 +16,7 @@ public:
 
 int  main()
 {
-	cout << "\n Create and initialize a container for the different shapes\n";
+	cout << " Create and initialize a container for the different shapes\n";
 	vector<Shape*> shapes(10);
 	for (unsigned int i = 0; i < shapes.size(); i++)
 	{
